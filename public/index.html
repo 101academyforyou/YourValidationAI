@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YourValidationAI — 一鍵為 GitHub 專案產生測試</title>
+  <meta name="description" content="輸入 GitHub 專案網址，YourValidationAI 會分析程式碼並自動產生單元測試、邊界測試與錯誤處理測試。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="container">
+      <a class="brand" href="/"><span class="logo">✓</span>YourValidationAI</a>
+      <div class="nav-links">
+        <a class="hide-sm" href="#features">功能</a>
+        <a class="hide-sm" href="#how">運作方式</a>
+        <a class="hide-sm" href="#faq">常見問題</a>
+        <a class="btn btn-primary btn-sm" href="/app">開始使用</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <span class="eyebrow">AI 驅動的自動化測試產生器</span>
+      <h1>貼上 GitHub 網址，<br /><span class="gradient-text">立即取得專屬的測試程式碼</span></h1>
+      <p class="lead">YourValidationAI 會讀取你的專案原始碼、理解每個函式的行為，並依照專案使用的語言與框架，自動撰寫涵蓋正常情況、邊界情況與錯誤處理的測試。</p>
+      <form class="quick-form" action="/app" method="get">
+        <input name="repo" type="text" placeholder="https://github.com/owner/repo" aria-label="GitHub 專案網址" required />
+        <button class="btn btn-primary" type="submit">產生測試 →</button>
+      </form>
+      <div class="hero-actions">
+        <a class="btn btn-ghost" href="#how">了解運作方式</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="features">
+    <div class="container">
+      <div class="section-title">
+        <h2>為什麼選擇 YourValidationAI</h2>
+        <p>把寫測試最花時間的部分交給 AI，你只需要審查與執行。</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="icon">🔍</div>
+          <h3>理解整個專案</h3>
+          <p>自動分析檔案結構、相依套件與既有測試，挑出最核心的模組優先測試，避免與現有測試重複。</p>
+        </div>
+        <div class="card">
+          <div class="icon">🧪</div>
+          <h3>完整的測試情境</h3>
+          <p>每個函式都會產生正常輸入、邊界情況與錯誤處理三類測試，外部依賴（網路、資料庫）自動 mock。</p>
+        </div>
+        <div class="card">
+          <div class="icon">⚙️</div>
+          <h3>自動配對測試框架</h3>
+          <p>偵測專案語言與設定檔，自動選用 Jest、Vitest、pytest、Go testing、JUnit 等慣用框架，也可手動指定。</p>
+        </div>
+        <div class="card">
+          <div class="icon">📋</div>
+          <h3>清楚的測試清單</h3>
+          <p>除了測試程式碼，還會列出每一個測試案例要驗證什麼，方便團隊審查涵蓋範圍。</p>
+        </div>
+        <div class="card">
+          <div class="icon">⬇️</div>
+          <h3>一鍵複製或下載</h3>
+          <p>每個測試檔都標示建議放置的路徑，可單獨複製，或一次下載全部檔案直接放進專案。</p>
+        </div>
+        <div class="card">
+          <div class="icon">🔒</div>
+          <h3>不需登入、不存程式碼</h3>
+          <p>只讀取公開專案，分析完成後不保留任何原始碼。也可以自行部署，在自己的環境中使用。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="alt">
+    <div class="container">
+      <div class="section-title">
+        <h2>三個步驟完成</h2>
+        <p>從貼上網址到拿到測試，通常只需要一到兩分鐘。</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="step-num">1</div>
+          <h3>輸入 GitHub 專案</h3>
+          <p>貼上公開專案網址，例如 <code>https://github.com/owner/repo</code>，也可以指定分支。</p>
+        </div>
+        <div class="card">
+          <div class="step-num">2</div>
+          <h3>AI 分析程式碼</h3>
+          <p>系統下載核心原始碼與設定檔，判斷語言與測試框架，再由 Claude 理解每個模組的行為。</p>
+        </div>
+        <div class="card">
+          <div class="step-num">3</div>
+          <h3>檢視並使用測試</h3>
+          <p>瀏覽專案摘要、測試案例清單與完整測試程式碼，複製或下載後即可在本機執行。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container split">
+      <div>
+        <h2 style="font-size:clamp(1.5rem,3vw,2rem);margin:0 0 12px">產出的是可以直接執行的測試</h2>
+        <p style="color:var(--muted);margin:0">不是空泛的範本，而是根據你的程式碼寫出具體輸入與預期輸出的測試。</p>
+        <ul class="check-list">
+          <li>匯入路徑對應專案中實際的檔案位置</li>
+          <li>斷言具體明確，涵蓋正常、邊界與錯誤情況</li>
+          <li>沿用專案既有的測試框架與程式風格</li>
+          <li>附上安裝依賴與執行測試的指令</li>
+        </ul>
+      </div>
+<pre class="preview"><span class="c">// tests/cart.test.js — 由 YourValidationAI 產生</span>
+<span class="k">import</span> { calculateTotal } <span class="k">from</span> <span class="s">"../src/cart"</span>;
+
+<span class="f">describe</span>(<span class="s">"calculateTotal"</span>, () =&gt; {
+  <span class="f">it</span>(<span class="s">"加總所有商品的小計"</span>, () =&gt; {
+    <span class="f">expect</span>(<span class="f">calculateTotal</span>([
+      { price: <span class="s">100</span>, qty: <span class="s">2</span> },
+      { price: <span class="s">50</span>,  qty: <span class="s">1</span> },
+    ])).<span class="f">toBe</span>(<span class="s">250</span>);
+  });
+
+  <span class="f">it</span>(<span class="s">"空購物車回傳 0"</span>, () =&gt; {
+    <span class="f">expect</span>(<span class="f">calculateTotal</span>([])).<span class="f">toBe</span>(<span class="s">0</span>);
+  });
+
+  <span class="f">it</span>(<span class="s">"數量為負數時拋出錯誤"</span>, () =&gt; {
+    <span class="f">expect</span>(() =&gt; <span class="f">calculateTotal</span>([{ price: <span class="s">10</span>, qty: <span class="s">-1</span> }]))
+      .<span class="f">toThrow</span>();
+  });
+});</pre>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="container">
+      <div class="section-title">
+        <h2>支援的語言與框架</h2>
+        <p>自動偵測，也可以在產生前手動指定。</p>
+      </div>
+      <div class="lang-list">
+        <span class="chip">JavaScript · Jest / Vitest / Mocha</span>
+        <span class="chip">TypeScript · Jest / Vitest</span>
+        <span class="chip">Python · pytest / unittest</span>
+        <span class="chip">Go · testing</span>
+        <span class="chip">Java · JUnit 5</span>
+        <span class="chip">Kotlin · JUnit 5</span>
+        <span class="chip">Ruby · RSpec / Minitest</span>
+        <span class="chip">PHP · PHPUnit</span>
+        <span class="chip">Rust · cargo test</span>
+        <span class="chip">C# · xUnit</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="faq">
+    <div class="container" style="max-width:780px">
+      <div class="section-title"><h2>常見問題</h2></div>
+      <details>
+        <summary>可以分析私有專案嗎？</summary>
+        <p>公開服務只讀取公開專案。若要分析私有專案，可以自行部署 YourValidationAI，並在伺服器設定具有讀取權限的 GITHUB_TOKEN。</p>
+      </details>
+      <details>
+        <summary>大型專案會分析全部檔案嗎？</summary>
+        <p>系統會依重要性挑選最多 40 個核心原始碼檔案（約 30 萬字元）交給 AI，並在結果中列出未納入分析的檔案。若想聚焦特定模組，可以輸入指向該分支的網址。</p>
+      </details>
+      <details>
+        <summary>產生的測試一定正確嗎？</summary>
+        <p>AI 產生的測試是很好的起點，但仍建議在執行前審查。若某個測試失敗，可能是測試假設有誤，也可能是你找到了一個真正的 bug。</p>
+      </details>
+      <details>
+        <summary>什麼是「範本模式」？</summary>
+        <p>當伺服器沒有設定 AI 金鑰時，系統會以靜態分析找出公開函式，產生可自行補完的測試骨架。設定 ANTHROPIC_API_KEY 後即可使用完整的 AI 模式。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="card">
+        <h2 style="margin:0 0 10px;font-size:clamp(1.5rem,3vw,2rem)">現在就為你的專案加上測試</h2>
+        <p style="margin:0 auto 24px;max-width:520px">不用安裝、不用登入，貼上網址即可開始。</p>
+        <a class="btn btn-primary" href="/app">開始產生測試 →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <span>© YourValidationAI</span>
+      <span>由 Claude 提供 AI 分析</span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>產生測試 — YourValidationAI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="container">
+      <a class="brand" href="/"><span class="logo">✓</span>YourValidationAI</a>
+      <div class="nav-links">
+        <span id="modeBadge" class="mode-badge"><span class="dot"></span><span>檢查中…</span></span>
+        <a class="hide-sm" href="/">介紹</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="app-main">
+    <div class="container">
+      <div class="card form-card">
+        <h1>為 GitHub 專案產生測試</h1>
+        <p>輸入公開專案網址，系統會分析程式碼並產生對應的測試內容。</p>
+        <form id="form">
+          <div class="field">
+            <label for="repo">GitHub 專案網址</label>
+            <input id="repo" name="repo" type="text" placeholder="https://github.com/owner/repo 或 owner/repo" autocomplete="off" required />
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="language">程式語言</label>
+              <select id="language">
+                <option value="auto">自動偵測</option>
+                <option value="javascript">JavaScript</option>
+                <option value="typescript">TypeScript</option>
+                <option value="python">Python</option>
+                <option value="go">Go</option>
+                <option value="java">Java</option>
+                <option value="kotlin">Kotlin</option>
+                <option value="ruby">Ruby</option>
+                <option value="php">PHP</option>
+                <option value="rust">Rust</option>
+                <option value="csharp">C#</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="framework">測試框架</label>
+              <select id="framework">
+                <option value="auto">自動選擇</option>
+                <option>Jest</option>
+                <option>Vitest</option>
+                <option>Mocha + Chai</option>
+                <option>pytest</option>
+                <option>unittest</option>
+                <option>Go testing</option>
+                <option>JUnit 5</option>
+                <option>RSpec</option>
+                <option>Minitest</option>
+                <option>PHPUnit</option>
+                <option>cargo test</option>
+                <option>xUnit</option>
+              </select>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+            <div class="examples">
+              範例：
+              <button type="button" data-repo="sindresorhus/slugify">sindresorhus/slugify</button>
+              <button type="button" data-repo="pallets/itsdangerous">pallets/itsdangerous</button>
+              <button type="button" data-repo="gorilla/mux">gorilla/mux</button>
+            </div>
+            <button id="submit" class="btn btn-primary" type="submit">產生測試</button>
+          </div>
+        </form>
+
+        <div id="progress" class="progress"><ul id="progressList"></ul></div>
+        <div id="error" class="error-box" role="alert"></div>
+      </div>
+
+      <div id="results" class="results"></div>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
