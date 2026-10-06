@@ -24,6 +24,14 @@ if (appUrl) {
 } else {
   const deploy = `${repoUrl}#快速開始`;
   html = html
+    .replace(
+      /<!-- online-option:start -->[\s\S]*?<!-- online-option:end -->/,
+      `<div class="access-option">
+            <h4>🌐 線上使用</h4>
+            <p>線上版本尚未開放。目前請依右側步驟在自己的電腦上架設，或參考 GitHub 上的部署說明。</p>
+            <a class="btn btn-ghost" href="${deploy}" target="_blank" rel="noopener">查看部署說明 →</a>
+          </div>`,
+    )
     .replaceAll('href="/app"', `href="${deploy}" target="_blank" rel="noopener"`)
     .replace(/<form class="quick-form"[\s\S]*?<\/form>/, `<div class="hero-actions" style="margin-bottom:12px"><a class="btn btn-primary" href="${deploy}" target="_blank" rel="noopener">自行部署 →</a></div>`)
     .replace('<a class="btn btn-ghost" href="#how">', `<a class="btn btn-ghost" href="${repoUrl}" target="_blank" rel="noopener">查看原始碼</a>\n        <a class="btn btn-ghost" href="#how">`);
@@ -35,5 +43,6 @@ fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(out, { recursive: true });
 fs.writeFileSync(path.join(out, "index.html"), html);
 fs.copyFileSync(path.join(root, "public/styles.css"), path.join(out, "styles.css"));
+fs.cpSync(path.join(root, "public/images"), path.join(out, "images"), { recursive: true });
 fs.writeFileSync(path.join(out, ".nojekyll"), "");
 console.log(`已輸出 _site/（產生測試連結：${appUrl ? `${appUrl}/app` : "部署說明"}）`);

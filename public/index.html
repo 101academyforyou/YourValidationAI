@@ -16,6 +16,7 @@
       <div class="nav-links">
         <a class="hide-sm" href="#features">功能</a>
         <a class="hide-sm" href="#how">運作方式</a>
+        <a class="hide-sm" href="#guide">介面導覽</a>
         <a class="hide-sm" href="#faq">常見問題</a>
         <a class="btn btn-primary btn-sm" href="/app">開始使用</a>
       </div>
@@ -32,7 +33,7 @@
         <button class="btn btn-primary" type="submit">產生測試 →</button>
       </form>
       <div class="hero-actions">
-        <a class="btn btn-ghost" href="#how">了解運作方式</a>
+        <a class="btn btn-ghost" href="#guide">看介面怎麼用</a>
       </div>
     </div>
   </header>
@@ -100,6 +101,123 @@
           <h3>檢視並使用測試</h3>
           <p>瀏覽專案摘要、測試案例清單與完整測試程式碼，複製或下載後即可在本機執行。</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="guide">
+    <div class="container">
+      <div class="section-title">
+        <h2>介面導覽：一步一步帶你用</h2>
+        <p>從打開介面、輸入專案，到拿到測試程式碼，每個畫面都在這裡。</p>
+      </div>
+
+      <div class="access card">
+        <div>
+          <span class="step-label">第 0 步</span>
+          <h3>怎麼進入產生測試的介面？</h3>
+          <p>產生測試的介面網址是 <code>/app</code>，有兩種方式可以打開：</p>
+        </div>
+        <div class="access-options">
+          <!-- online-option:start -->
+          <div class="access-option">
+            <h4>🌐 線上使用</h4>
+            <p>點下方按鈕，或頁面上任何一個「開始使用」按鈕，就會進入產生測試的介面。</p>
+            <a class="btn btn-primary" href="/app">開啟產生測試介面 →</a>
+          </div>
+          <!-- online-option:end -->
+          <div class="access-option">
+            <h4>💻 在自己的電腦上架設</h4>
+            <p>需要 Node.js 20 以上。執行以下指令，再用瀏覽器打開 <code>http://localhost:3000/app</code>。</p>
+<pre class="setup">git clone https://github.com/101academyforyou/YourValidationAI
+cd YourValidationAI
+npm install
+export ANTHROPIC_API_KEY=你的金鑰   # 選填，不填會使用範本模式
+npm start</pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-row">
+        <div class="guide-text">
+          <span class="step-label">第 1 步</span>
+          <h3>貼上 GitHub 專案網址</h3>
+          <p>在「GitHub 專案網址」欄位輸入要產生測試的公開專案，支援以下格式：</p>
+          <ul class="check-list">
+            <li><code>https://github.com/owner/repo</code></li>
+            <li><code>owner/repo</code>（簡寫）</li>
+            <li><code>https://github.com/owner/repo/tree/分支名稱</code>（指定分支）</li>
+          </ul>
+          <p>「程式語言」和「測試框架」預設會自動偵測，想指定時再從下拉選單選擇。不知道要測哪個專案？點「範例」裡的專案名稱就會自動填入。最後按右下角的 <b>產生測試</b>。</p>
+        </div>
+        <figure class="shot"><img src="images/guide-1-form.png" alt="產生測試介面：輸入 GitHub 專案網址並選擇語言與框架" loading="lazy" /></figure>
+      </div>
+
+      <div class="guide-row reverse">
+        <div class="guide-text">
+          <span class="step-label">第 2 步</span>
+          <h3>等待分析完成</h3>
+          <p>按下按鈕後，表單下方會即時顯示每個步驟的進度：</p>
+          <ul class="check-list">
+            <li>讀取專案資訊與檔案結構</li>
+            <li>下載核心原始碼檔案</li>
+            <li>判斷語言並選擇測試框架</li>
+            <li>AI 撰寫測試（會顯示已產生的字數）</li>
+          </ul>
+          <p>一般專案約需一到兩分鐘，期間請不要關閉頁面。若網址錯誤或專案不存在，這裡會顯示紅色的錯誤訊息。</p>
+        </div>
+        <figure class="shot"><img src="images/guide-2-progress.png" alt="分析進度：逐步顯示讀取、下載、偵測與 AI 撰寫的狀態" loading="lazy" /></figure>
+      </div>
+
+      <div class="guide-row">
+        <div class="guide-text">
+          <span class="step-label">第 3 步</span>
+          <h3>查看結果總覽</h3>
+          <p>完成後，下方會出現結果區：</p>
+          <ul class="check-list">
+            <li><b>專案資訊</b>：分支、語言、測試框架與目前模式</li>
+            <li><b>數據卡片</b>：測試檔數、測試案例數、分析了幾個檔案、專案原有測試數</li>
+            <li><b>專案摘要</b>分頁：AI 對專案的說明與測試策略，以及安裝與執行測試的指令</li>
+          </ul>
+        </div>
+        <figure class="shot"><img src="images/guide-3-overview.png" alt="結果總覽：專案資訊、數據卡片與專案摘要" loading="lazy" /></figure>
+      </div>
+
+      <div class="guide-row reverse">
+        <div class="guide-text">
+          <span class="step-label">第 4 步</span>
+          <h3>取得測試程式碼</h3>
+          <p>切換到「<b>測試程式碼</b>」分頁，每個測試檔都會標示：</p>
+          <ul class="check-list">
+            <li>建議放在專案中的路徑，例如 <code>tests/cart.test.ts</code></li>
+            <li>測試的是哪個原始碼檔案、涵蓋了什麼</li>
+            <li><b>複製</b>：複製程式碼到剪貼簿</li>
+            <li><b>下載</b>：下載單一測試檔</li>
+          </ul>
+          <p>想一次全部帶走，按右上角的 <b>下載全部測試（.zip）</b>，解壓縮後直接放進專案即可。</p>
+        </div>
+        <figure class="shot"><img src="images/guide-4-code.png" alt="測試程式碼分頁：每個測試檔可以複製或下載" loading="lazy" /></figure>
+      </div>
+
+      <div class="guide-row">
+        <div class="guide-text">
+          <span class="step-label">第 5 步</span>
+          <h3>檢查測試案例清單</h3>
+          <p>「<b>測試案例清單</b>」分頁用表格列出每一個測試要驗證什麼，方便你或團隊審查涵蓋範圍。上方的按鈕可以依類型篩選：</p>
+          <div class="meta" style="margin:12px 0">
+            <span class="tag unit">單元</span><span class="tag edge">邊界</span><span class="tag error">錯誤處理</span><span class="tag integration">整合</span>
+          </div>
+          <p>最後的「<b>分析範圍</b>」分頁會列出哪些檔案被分析、哪些因為太多而略過，以及專案原本就有的測試檔。</p>
+        </div>
+        <figure class="shot"><img src="images/guide-5-cases.png" alt="測試案例清單：依單元、邊界、錯誤處理、整合篩選" loading="lazy" /></figure>
+      </div>
+
+      <div class="card guide-final">
+        <span class="step-label">第 6 步</span>
+        <h3>在自己的專案執行測試</h3>
+        <p>把測試檔放到建議的路徑後，執行「專案摘要」分頁中提供的指令，例如：</p>
+        <pre class="setup">npm install -D vitest &amp;&amp; npx vitest run</pre>
+        <p>如果有測試失敗，可能是 AI 的假設需要調整，也可能是你找到了一個真正的 bug，建議逐一檢查。</p>
       </div>
     </div>
   </section>
