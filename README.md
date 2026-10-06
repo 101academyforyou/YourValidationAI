@@ -38,6 +38,16 @@ npm start                # http://localhost:3000
 3. `src/generator.js`：將程式碼交給 Claude（預設 `claude-opus-5-5`），以 JSON Schema 結構化輸出取得 `summary`、`setup_instructions`、`test_files`、`test_cases`。
 4. `server.js`：`POST /api/generate` 以 NDJSON 串流回傳進度與結果；`GET /api/status` 回報目前模式。
 
+## GitHub Pages 介紹頁
+
+推送到 `main` 時，`.github/workflows/pages.yml` 會把介紹頁（`public/index.html`）建置成靜態網站並部署到 GitHub Pages。
+
+第一次使用需要在 GitHub 啟用一次：**Settings → Pages → Build and deployment → Source** 選擇 **GitHub Actions**，然後到 Actions 分頁重新執行「Deploy intro page to GitHub Pages」。
+
+GitHub Pages 只能放靜態檔案，產生測試的功能需要後端伺服器。部署後端之後，在 **Settings → Secrets and variables → Actions → Variables** 新增 `APP_URL`（例如 `https://yourvalidationai.example.com`），介紹頁的「開始使用」按鈕與網址輸入框就會連到該伺服器；未設定時則連到本 README 的部署說明。
+
+本機預覽：`node scripts/build-pages.js`，輸出在 `_site/`。
+
 ## 測試
 
 ```bash

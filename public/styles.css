@@ -70,6 +70,7 @@ code, pre { font-family: var(--mono); }
 .nav-links { display: flex; align-items: center; gap: 22px; font-size: 0.95rem; }
 .nav-links a { color: var(--muted); }
 .nav-links a:hover { color: var(--text); text-decoration: none; }
+.nav-links a.btn-primary, .nav-links a.btn-primary:hover { color: #fff; }
 @media (max-width: 720px) { .nav-links .hide-sm { display: none; } }
 
 /* 按鈕 */
